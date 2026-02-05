@@ -1,0 +1,27 @@
+{
+  "name": "coderz-admin-service",
+  "version": "1.0.0",
+  "description": "Admin Service to Add and Modify Coding Problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "npx nodemon src/index.js"
+  },
+  "keywords": [
+    "Nodejs",
+    "Expressjs",
+    "MongoDB",
+    "Micro-Service"
+  ],
+  "author": "Prashannjeet Paul",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
