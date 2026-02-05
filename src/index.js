@@ -8,6 +8,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
 
+// Routes
+const apiRoute = require("./routes/index");
+app.use("/api", apiRoute);
+
 // Server
 app.listen(PORT, () => {
   console.log(`Server listening to PORT:${PORT}`);
