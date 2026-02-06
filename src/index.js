@@ -12,6 +12,10 @@ app.use(express.text());
 const apiRoute = require("./routes/index");
 app.use("/api", apiRoute);
 
+// Last middleware to handle error
+const errorHandler = require("./utils/errorHandler.utils");
+app.use(errorHandler);
+
 // Server
 app.listen(PORT, () => {
   console.log(`Server listening to PORT:${PORT}`);

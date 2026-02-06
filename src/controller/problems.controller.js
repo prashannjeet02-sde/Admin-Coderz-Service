@@ -1,5 +1,11 @@
-const testing = (req, res) => {
-  return res.status(200).json({ success: true, message: "Test Successful" });
+const NotFound = require("../errors/not-foundError");
+
+const testing = (req, res, next) => {
+  try {
+    throw new NotFound("Email");
+  } catch (error) {
+    next(error);
+  }
 };
 
 const addProblem = (req, res) => {};
