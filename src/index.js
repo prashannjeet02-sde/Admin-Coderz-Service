@@ -16,7 +16,11 @@ app.use("/api", apiRoute);
 const errorHandler = require("./utils/errorHandler.utils");
 app.use(errorHandler);
 
-// Server
-app.listen(PORT, () => {
+// Server and Database
+const DB = require("./config/db.config");
+
+app.listen(PORT, async () => {
   console.log(`Server listening to PORT:${PORT}`);
+  await DB();
+  console.log("DB Connection Successful");
 });
