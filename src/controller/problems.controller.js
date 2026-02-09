@@ -15,14 +15,23 @@ const addProblem = async (req, res, next) => {
   try {
     const problem = await problemService.createProblem(req.body);
     return res
-      .status(200)
+      .status(201)
       .json({ success: true, message: "New Problem Created", data: problem });
   } catch (error) {
     next(error);
   }
 };
 
-const getProblem = (req, res) => {};
+const getProblem = async (req, res, next) => {
+  try {
+    const fetch = await problemService.fetchProblem();
+    return res
+      .status(200)
+      .json({ success: true, message: "List of all Problem", data: fetch });
+  } catch (error) {
+    next(error);
+  }
+};
 
 const getProblems = (req, res) => {};
 
