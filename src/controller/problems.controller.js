@@ -1,4 +1,7 @@
-const NotFound = require("../errors/not-foundError");
+const { ProblemService } = require("../services/index");
+const { ProblemRepo } = require("../repositories/index");
+
+const problemService = new ProblemService(new ProblemRepo());
 
 const testing = (req, res, next) => {
   try {
@@ -8,7 +11,16 @@ const testing = (req, res, next) => {
   }
 };
 
-const addProblem = (req, res) => {};
+const addProblem = async (req, res, next) => {
+  try {
+    const problem = await problemService.createProblem(req.body);
+    return res
+      .status(200)
+      .json({ success: true, message: "New Problem Created", data: problem });
+  } catch (error) {
+    next(error);
+  }
+};
 
 const getProblem = (req, res) => {};
 
