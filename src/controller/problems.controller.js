@@ -24,7 +24,18 @@ const addProblem = async (req, res, next) => {
 
 const getProblem = async (req, res, next) => {
   try {
-    const fetch = await problemService.fetchProblem();
+    const problem = await problemService.fetchProblem(req.params.id);
+    return res
+      .status(201)
+      .json({ success: true, message: "Data list fetched", data: problem });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getProblems = async (req, res, next) => {
+  try {
+    const fetch = await problemService.fetchProblems();
     return res
       .status(200)
       .json({ success: true, message: "List of all Problem", data: fetch });
@@ -32,8 +43,6 @@ const getProblem = async (req, res, next) => {
     next(error);
   }
 };
-
-const getProblems = (req, res) => {};
 
 const updateProblem = (req, res) => {};
 

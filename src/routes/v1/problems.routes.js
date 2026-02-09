@@ -5,9 +5,9 @@ const problemRoutes = express.Router();
 
 problemRoutes.get("/check", ProblemController.testing);
 /** ------------------------------------------------------------- */
-problemRoutes.get("/", ProblemController.getProblem);
+problemRoutes.get("/:id", ProblemController.getProblem);
 
-problemRoutes.get("/:id", ProblemController.getProblems);
+problemRoutes.get("/", ProblemController.getProblems);
 
 problemRoutes.post("/", ProblemController.addProblem);
 

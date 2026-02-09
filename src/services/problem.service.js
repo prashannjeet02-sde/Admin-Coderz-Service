@@ -16,10 +16,19 @@ class ProblemService {
     }
   }
 
-  async fetchProblem() {
+  async fetchProblems() {
     try {
       const problems = await this.repository.GetProblems();
       return problems;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async fetchProblem(id) {
+    try {
+      const problem = await this.repository.GetProblem(id);
+      return problem;
     } catch (error) {
       throw error;
     }
