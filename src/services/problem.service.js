@@ -33,6 +33,14 @@ class ProblemService {
       throw error;
     }
   }
+
+  async removeProblem(id) {
+    try {
+      const del = await this.repository.deleteProblem(id);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = ProblemService;

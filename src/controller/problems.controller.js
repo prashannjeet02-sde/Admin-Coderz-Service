@@ -46,7 +46,17 @@ const getProblems = async (req, res, next) => {
 
 const updateProblem = (req, res) => {};
 
-const deleteProblem = (req, res) => {};
+const deleteProblem = async (req, res, next) => {
+  try {
+    const del = await problemService.removeProblem(req.params.id);
+    return res.status(200).json({
+      success: true,
+      message: `Problem with id:${req.params.id} deleted`,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   testing,
