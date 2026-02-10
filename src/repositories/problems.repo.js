@@ -42,6 +42,19 @@ class ProblemRepository {
       console.log(error);
     }
   }
+
+  async updateProblem(id, body) {
+    try {
+      const modify = await Problems.findByIdAndUpdate(
+        id,
+        { $set: body },
+        { new: true, runValidators: true },
+      );
+      return modify;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = ProblemRepository;

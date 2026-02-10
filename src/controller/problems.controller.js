@@ -44,7 +44,16 @@ const getProblems = async (req, res, next) => {
   }
 };
 
-const updateProblem = (req, res) => {};
+const updateProblem = async (req, res, next) => {
+  try {
+    const modify = await problemService.updateProblem(req.params.id, req.body);
+    return res
+      .status(201)
+      .json({ success: true, message: "Problem updated", data: modify });
+  } catch (error) {
+    next(error);
+  }
+};
 
 const deleteProblem = async (req, res, next) => {
   try {
