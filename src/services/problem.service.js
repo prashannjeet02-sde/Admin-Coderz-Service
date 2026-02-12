@@ -1,4 +1,5 @@
 const { SanitizeMarkdown } = require("../utils/index");
+const { NotFoundError, BadRequestError } = require("../errors/index");
 
 class ProblemService {
   constructor(repository) {
@@ -35,11 +36,11 @@ class ProblemService {
   }
 
   async removeProblem(id) {
-    try {
-      const del = await this.repository.deleteProblem(id);
-    } catch (error) {
-      throw error;
+    const del = await this.repository.deleteProblem(id);
+    if (!del) {
+      throw new NotFoundError("Problem");
     }
+    return del;
   }
 
   async updateProblem(id, body) {
